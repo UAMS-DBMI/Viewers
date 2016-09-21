@@ -1,11 +1,20 @@
+import { cornerstoneWADOImageLoader } from 'meteor/cornerstone';
+
 Meteor.startup(function() {
-    var config = {
-        webWorkerPath : '../../Packages/cornerstone/client/cornerstoneWADOImageLoaderWebWorker.js',
+	const maxWebWorkers = Math.max(navigator.hardwareConcurrency - 1, 1);
+    const config = {
+	    maxWebWorkers: maxWebWorkers,	
+    	startWebWorkersOnDemand: true,
+        webWorkerPath : '/packages/cornerstone/public/js/cornerstoneWADOImageLoaderWebWorker.js',
         taskConfiguration: {
             'decodeTask' : {
-                codecsPath: '../../Packages/cornerstone/client/cornerstoneWADOImageLoaderCodecs.js'
+		        loadCodecsOnStartup : false,
+		        initializeCodecsOnStartup: false,
+                codecsPath: '/packages/cornerstone/public/js/cornerstoneWADOImageLoaderCodecs.js',
+                usePDFJS: false
             }
         }
     };
+
     cornerstoneWADOImageLoader.webWorkerManager.initialize(config);
 });
