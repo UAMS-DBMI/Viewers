@@ -8,7 +8,7 @@ Meteor.startup(function() {
         webWorkerPath : '/packages/cornerstone/public/js/cornerstoneWADOImageLoaderWebWorker.js',
         taskConfiguration: {
             'decodeTask' : {
-		        loadCodecsOnStartup : false,
+		        loadCodecsOnStartup : true,
 		        initializeCodecsOnStartup: false,
                 codecsPath: '/packages/cornerstone/public/js/cornerstoneWADOImageLoaderCodecs.js',
                 usePDFJS: false
