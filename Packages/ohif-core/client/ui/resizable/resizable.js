@@ -131,6 +131,9 @@ class Resizable {
             $window.off('mouseup', this.endResizeHandler);
 
             this.$element.removeClass('resizing');
+
+            // Let the listeners know that this element was resized
+            this.$element.trigger('resize');
         };
     }
 
